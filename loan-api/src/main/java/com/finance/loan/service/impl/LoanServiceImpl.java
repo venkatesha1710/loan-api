@@ -13,7 +13,6 @@ import com.finance.loan.model.LoanInfo;
 import com.finance.loan.repository.LoanRepository;
 import com.finance.loan.service.LoanService;
 import com.finance.loan.vo.LoanInfoRequestVO;
-//import com.finance.loan.vo.LoanSearchRequestVO;
 import com.finance.loan.vo.LoanupdateRequestVO;
 
 @Service
@@ -42,23 +41,24 @@ public class LoanServiceImpl implements LoanService {
 	@Override
 	public LoanInfo modifyLoan(LoanupdateRequestVO loanDetails) {
 		Optional<LoanInfo> loanEntity = loanRepository.findById(Long.parseLong(loanDetails.getLoanNumber()));
-		LoanInfo loanUpdateInfo = loanEntity.get();
-		loanUpdateInfo.setLoanAmount(loanDetails.getLoanAmount());
-		loanUpdateInfo.setLoanStatus(loanDetails.getStatus());
-		loanUpdateInfo.setLoanTerm(loanDetails.getLoanTerm());
+		LoanInfo loanUpdateInfo = null;
+		if(loanEntity.isPresent()) {
+			loanUpdateInfo = loanEntity.get();
+			loanUpdateInfo.setLoanAmount(loanDetails.getLoanAmount());
+			loanUpdateInfo.setLoanStatus(loanDetails.getStatus());
+			loanUpdateInfo.setLoanTerm(loanDetails.getLoanTerm());
+		}	
 		return loanRepository.save(loanUpdateInfo);
 	}
 
 	@Override
 	public LoanInfo findLoanInfoByLoanNumber(String loanNumber) {
-		LoanInfo loanInfo=loanRepository.findByLoanNumber(Long.parseLong(loanNumber));
-		return loanInfo;
+		return loanRepository.findByLoanNumber(Long.parseLong(loanNumber));
 	}
 
 	@Override
 	public LoanInfo findLoanInfoByUserName(String userName) {
-		LoanInfo loanInfo=loanRepository.findByUserName(userName);
-		return loanInfo;
+		return loanRepository.findByUserName(userName);
 	}
 
 }
