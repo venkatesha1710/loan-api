@@ -30,6 +30,7 @@ public class LoanServiceImpl implements LoanService {
 		LoanInfo loanInfo = new LoanInfo();
 		loanInfo.setFirstName(loan.getFirstName());
 		loanInfo.setLastName(loan.getLastName());
+		loanInfo.setUserName(loan.getUserName());
 		loanInfo.setLoanAmount(loan.getLoanAmount());
 		Date lDate =new SimpleDateFormat("dd-MM-yyyy").parse(loan.getOriginationDate());  
 		loanInfo.setLoanDate(lDate);

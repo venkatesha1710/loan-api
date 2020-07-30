@@ -24,14 +24,6 @@ public class LoanInfo {
     
     @Column(name = "loan_term", nullable = false)
     private String loanTerm;
-    
-    public String getLoanTerm() {
-		return loanTerm;
-	}
-
-	public void setLoanTerm(String loanTerm) {
-		this.loanTerm = loanTerm;
-	}
 
 	@Column(name = "loan_amount", nullable = false)
     private String loanAmount;
@@ -88,7 +80,15 @@ public class LoanInfo {
 	public void setLoanAmount(String loanAmount) {
 		this.loanAmount = loanAmount;
 	}
+	
+    public String getLoanTerm() {
+		return loanTerm;
+	}
 
+	public void setLoanTerm(String loanTerm) {
+		this.loanTerm = loanTerm;
+	}
+	
 	/**
 	 * @return the firstName
 	 */

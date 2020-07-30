@@ -5,6 +5,7 @@ public class LoanInfoRequestVO {
 	private String loanAmount;
 	private String firstName;
 	private String lastName;
+	private String userName;
 	private String Status;
 	private String originationDate;
 	/**
@@ -78,6 +79,12 @@ public class LoanInfoRequestVO {
 	 */
 	public void setOriginationDate(String originationDate) {
 		this.originationDate = originationDate;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 
