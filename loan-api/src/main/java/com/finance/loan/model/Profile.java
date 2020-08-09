@@ -1,5 +1,8 @@
 package com.finance.loan.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +14,7 @@ import javax.validation.constraints.Size;
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
 		})
-public class User {
+public class Profile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,19 +22,6 @@ public class User {
 	@NotBlank
 	@Size(max = 20)
 	private String username;
-	
-	@NotBlank
-    @Size(min = 3, max = 20)
-    private String firstname;
-    
-    @NotBlank
-    @Size(min = 1, max = 20)
-    private String lastname;
-    
-
-    @NotBlank
-    @Size(min = 10, max = 10)
-    private String phonenumber;
 
 	@NotBlank
 	@Size(max = 50)
@@ -42,20 +32,19 @@ public class User {
 	@Size(max = 120)
 	private String password;
 
-	private String role;
-	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 
-	public User() {
+	public Profile() {
 	}
 
-	public User(String username, String email, String password, String firstname, String lastname, String phonenumber, String role) {
+	public Profile(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phonenumber = phonenumber;
-		this.role = role;
 	}
 
 	public Long getId() {
@@ -90,36 +79,11 @@ public class User {
 		this.password = password;
 	}
 
-
-	public String getFirstname() {
-		return firstname;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 }
