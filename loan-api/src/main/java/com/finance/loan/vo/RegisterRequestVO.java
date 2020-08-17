@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 public class RegisterRequestVO {
 	@NotBlank
     @Size(min = 3, max = 20)
-    private String username;
+    private String userName;
  
 	@NotBlank
     @Size(min = 6, max = 40)
@@ -20,26 +20,26 @@ public class RegisterRequestVO {
     
     @NotBlank
     @Size(min = 10, max = 10)
-    private String phonenumber;
+    private String phoneNumber;
     
     private String role;
     
     @NotBlank
     @Size(min = 3, max = 20)
-    private String firstname;
+    private String firstName;
     
     @NotBlank
     @Size(min = 1, max = 20)
-    private String lastname;
+    private String lastName;
 
     
   
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
  
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
  
     public String getEmail() {
@@ -59,28 +59,28 @@ public class RegisterRequestVO {
     }
     
 
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getRole() {

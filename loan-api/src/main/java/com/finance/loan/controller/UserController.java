@@ -87,7 +87,7 @@ public class UserController {
 	@PostMapping("/register")
 	@CrossOrigin(origins = "${URL}")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequestVO registerRequest) {
-		if (userRepository.existsByUsername(registerRequest.getUsername())) {
+		if (userRepository.existsByUsername(registerRequest.getUserName())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponseVO("Error: Username is already taken!"));
@@ -100,12 +100,12 @@ public class UserController {
 		}
 
 		// Create new user's account
-		User user = new User(registerRequest.getUsername(), 
+		User user = new User(registerRequest.getUserName(), 
 				registerRequest.getEmail(),
 				registerRequest.getPassword(),
-				registerRequest.getFirstname(),
-				registerRequest.getLastname(),
-				registerRequest.getPhonenumber(),
+				registerRequest.getFirstName(),
+				registerRequest.getLastName(),
+				registerRequest.getPhoneNumber(),
 				registerRequest.getRole());
 				userRepository.save(user);
 
